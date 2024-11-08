@@ -1,0 +1,105 @@
+/* styles.css */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: #BA5370;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #F4E2D8, #BA5370);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #F4E2D8, #BA5370); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+header {
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    background: var(--white);
+    box-shadow: rgb(50 50 93 / 10%) 0 30px 60px -12px,
+      rgb(0 0 0 / 15%) 0 18px 36px -18px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+main {
+    padding: 2rem;
+}
+
+#films-list {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#films-list h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.film-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.film-card:hover {
+    transform: translateY(-5px);
+}
+
+.film-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.film-card h3 {
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin: 0;
+}
+
+.film-card p {
+    padding: 0 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.film-card .view-details {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.film-card .view-details:hover {
+    background-color: #555;
+}
+
+@media screen and (min-width: 768px) {
+    #films-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 2rem;
+    }
+
+    .film-card {
+        margin-bottom: 0;
+    }
+}
