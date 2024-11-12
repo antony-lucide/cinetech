@@ -1,38 +1,26 @@
-<?php
+<?php 
 
 return [
-    // Gestion des dépendances des classes
     'dependencies' => [
-        // Controllers
-        'FilmController' => [
-            'class' => 'FilmController',
-            'requires' => ['FilmModel'],
-            'path' => 'movieController.php'
+        'AuthController' => [
+            'class' => 'AuthController',
+            'requires' => ['UserModel'],
+            'path' => 'controllers/AuthController.php'
         ],
         
-        // Models
-        'FilmModel' => [
-            'class' => 'FilmModel',
-            'requires' => ['TMDBService'],
-            'path' => 'class/movie.php'
-        ],
-   
-        
-        // Views
-        'FilmView' => [
-            'class' => 'FilmView',
+        'UserModel' => [
+            'class' => 'UserModel',
             'requires' => [],
-            'path' => 'index.php'
+            'path' => 'models/UserModel.php'
         ]
     ],
     
-    // Autoloader configuration
     'autoload' => [
         'directories' => [
-            'controllers',
-            'models',
+            'class',
             'services',
-            'views'
         ]
     ]
 ];
+
+?>
