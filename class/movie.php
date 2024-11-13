@@ -1,10 +1,22 @@
 <?php
 class FilmModel {
-    private $apiKey = 'YOUR_TMDB_API_KEY';
-    private $baseUrl = 'https://api.themoviedb.org/3';
+    private $apiKey;
+    private $baseUrl;
+    private $db;
+    
+    public function __construct($config, $db) {
+        $this->apiKey = $config['api']['tmdb_key'];
+        $this->baseUrl = $config['api']['tmdb_base_url'];
+        $this->db = $db;
+    }
 
-    public function searchFilms($query) {
-        $url = "{$this->baseUrl}/search/movie?api_key={$this->apiKey}&query=" . urlencode($query);
+    public function searchFilms($query, $page = 1) {
+        $url = "{$this->baseUrl}/search/movie?api_key={$this->apiKey}&query=" . urlencode($query) . "&page=" . $page;
+        return $this->makeApiRequest($url);
+    }
+
+    public function getPopularFilms($page = 1) {
+        $url = "{$this->baseUrl}/movie/popular?api_key={$this->apiKey}&page=" . $page;
         return $this->makeApiRequest($url);
     }
 
@@ -16,33 +28,36 @@ class FilmModel {
     private function makeApiRequest($url) {
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FAILONERROR, true);
+        
         $response = curl_exec($ch);
-        curl_close($ch);
-        return json_decode($response, true);
-    }
-
-    public function formatFilmData($apiData) {
-        return [
-            'id' => $apiData['id'],
-            'title' => $apiData['title'],
-            'release_year' => substr($apiData['release_date'], 0, 4),
-            'poster' => "https://image.tmdb.org/t/p/w500" . $apiData['poster_path'],
-            'rating' => $apiData['vote_average'],
-            'genre' => isset($apiData['genres'][0]) ? $apiData['genres'][0]['name'] : 'N/A',
-            'director' => $this->getDirector($apiData['credits']['crew']),
-            'overview' => $apiData['overview'],
-            'language' => isset($apiData['spoken_languages'][0]) ? $apiData['spoken_languages'][0]['name'] : 'N/A',
-            'duration' => $apiData['runtime'],
-            'country' => isset($apiData['production_countries'][0]) ? $apiData['production_countries'][0]['name'] : 'N/A'
-        ];
-    }
-
-    private function getDirector($crew) {
-        foreach ($crew as $member) {
-            if ($member['job'] === 'Director') {
-                return $member['name'];
-            }
+        
+        if ($response === false) {
+            $error = curl_error($ch);
+            curl_close($ch);
+            throw new Exception("API Request failed: $error");
         }
-        return 'N/A';
+        
+        curl_close($ch);
+        $data = json_decode($response, true);
+        
+        if (isset($data['status_code']) && $data['status_code'] !== 200) {
+            throw new Exception($data['status_message'] ?? 'Unknown API error');
+        }
+        
+        return $data;
+    }
+
+    public function getUserFavorites($userId) {
+        $stmt = $this->db->prepare("SELECT film_id FROM favorites WHERE user_id = ?");
+        $stmt->execute([$userId]);
+        $favorites = $stmt->fetchAll(PDO::FETCH_COLUMN);
+        
+        $films = [];
+        foreach ($favorites as $filmId) {
+            $films[] = $this->getFilmDetails($filmId);
+        }
+        
+        return $films;
     }
 }

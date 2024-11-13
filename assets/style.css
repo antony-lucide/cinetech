@@ -32,74 +32,96 @@ main {
     padding: 2rem;
 }
 
-#films-list {
-    max-width: 1200px;
-    margin: 0 auto;
-}
 
-#films-list h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: #333;
+#films-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
 .film-card {
-    background-color: #fff;
+    background: white;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     overflow: hidden;
-    margin-bottom: 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
-}
-
-.film-card:hover {
-    transform: translateY(-5px);
 }
 
 .film-card img {
     width: 100%;
-    height: 400px;
-    object-fit: cover;
+    height: auto;
 }
 
-.film-card h3 {
-    font-size: 1.2rem;
-    padding: 1rem;
-    margin: 0;
-}
-
-.film-card p {
-    padding: 0 1rem;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    color: #666;
-}
-
-.film-card .view-details {
-    display: block;
-    width: 100%;
-    padding: 0.8rem;
-    background-color: #333;
-    color: #fff;
+.film-info {
+    padding: 15px;
     text-align: center;
-    text-decoration: none;
+}
+
+.film-info h3 {
+    margin: 0 0 10px 0;
+}
+
+/* Style du bouton détails */
+.details-btn {
+    background-color: #007bff;
+    color: white;
     border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
     cursor: pointer;
+    margin-top: 10px;
     transition: background-color 0.3s ease;
 }
 
-.film-card .view-details:hover {
-    background-color: #555;
+.details-btn:hover {
+    background-color: #0056b3;
 }
 
-@media screen and (min-width: 768px) {
-    #films-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 2rem;
-    }
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    .film-card {
-        margin-bottom: 0;
-    }
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Style pour l'image dans la modale */
+.modal-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 10px 0;
+}
+
+/* Style pour le texte dans la modale */
+.modal-content .film-info {
+    text-align: left;
+}
+
+.modal-content .overview {
+    margin-top: 15px;
+    line-height: 1.5;
 }

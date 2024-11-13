@@ -1,5 +1,5 @@
 {
-  "name": "movie-theater-rating",
+  "name": "antony/movie-theater-rating",
   "version": "1.0.0",
   "description": "A vanilla JavaScript application for rating movie theaters",
   "main": "scripts.js",

@@ -1,26 +1,13 @@
-<?php 
-
+<?php
 return [
-    'dependencies' => [
-        'AuthController' => [
-            'class' => 'AuthController',
-            'requires' => ['UserModel'],
-            'path' => 'controllers/AuthController.php'
-        ],
-        
-        'UserModel' => [
-            'class' => 'UserModel',
-            'requires' => [],
-            'path' => 'models/UserModel.php'
-        ]
+    'database' => [
+        'host' => 'localhost',
+        'dbname' => 'cinetech',
+        'user' => 'root',
+        'password' => ''
     ],
-    
-    'autoload' => [
-        'directories' => [
-            'class',
-            'services',
-        ]
+    'api' => [
+        'tmdb_key' => 'b1ea66a0baf7bc288a9c02ca4ee33d41',
+        'tmdb_base_url' => 'https://api.themoviedb.org/3'
     ]
 ];
-
-?>
