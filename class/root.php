@@ -1,7 +1,7 @@
-<?php
+<?php 
 
 class Root {
-    private $server = ''; 
+    private $server = '';
     
     public function __construct() {
         $this->server = $_SERVER['REQUEST_URI'];
@@ -12,13 +12,24 @@ class Root {
     }
 
     public function getPath() {
-        return explode('/', $this->server)[1];
+        $path = trim(parse_url($this->server, PHP_URL_PATH), '/');
+        return $path === '' ? 'index.php' : $path;
+    }
+
+    public function getHome() {
+        return 'index.php';
     }
 
     public function getMethod() {
-        return explode('/', $this->server)[2];
+        $parts = explode('/', $this->getPath());
+        return isset($parts[1]) ? $parts[1] : '';
     }
 
+    public function getParams() {
+        $parts = explode('/', $this->getPath());
+        return array_slice($parts, 2);
+    }
 }
+
 
 ?>

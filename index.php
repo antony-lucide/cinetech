@@ -1,3 +1,26 @@
+<?php
+require_once './class/root.php';
+require_once './config/config.php';
+
+$root = new Root();
+$path = $root->getPath();
+
+switch ($path) {
+    case '':
+    case 'index':
+        require 'index.php';
+        break;
+    case 'auth':
+        require './View/auth.php';
+        break;
+    default:
+        http_response_code(404);
+        echo "404 Not Found";
+        break;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
