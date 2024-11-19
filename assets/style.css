@@ -12,7 +12,6 @@ body {
     background: #BA5370;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #F4E2D8, #BA5370);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #F4E2D8, #BA5370); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
 }
 
 header {
@@ -31,7 +30,6 @@ header h1 {
 main {
     padding: 2rem;
 }
-
 
 #films-list {
     display: grid;
@@ -76,6 +74,22 @@ main {
 
 .details-btn:hover {
     background-color: #0056b3;
+}
+
+/* Style du bouton favori */
+.favorite-btn {
+    background-color: #ff4081;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.favorite-btn:hover {
+    background-color: #c60055;
 }
 
 .modal {

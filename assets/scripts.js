@@ -30,11 +30,16 @@ function displayFilms(films) {
                 <p class="rating">★ ${film.vote_average}/10</p>
                 <p class="release-date">${formatDate(film.release_date)}</p>
                 <button class="details-btn">Voir les détails</button>
+                <button class="favorite-btn">Ajouter aux favoris</button>
             </div>
         `;
 
-        // Ajouter l'événement click sur le bouton uniquement
+        // Ajouter l'événement click sur le bouton détails
         filmCard.querySelector('.details-btn').addEventListener('click', () => showFilmDetails(film));
+
+        // Ajouter l'événement click sur le bouton favori
+        filmCard.querySelector('.favorite-btn').addEventListener('click', () => addToFavorites(film));
+
         filmsList.appendChild(filmCard);
     });
 }
@@ -61,6 +66,27 @@ function showFilmDetails(film) {
     modal.onclick = (e) => {
         if (e.target === modal) modal.remove();
     };
+}
+
+function addToFavorites(film) {
+    // Envoyer une requête POST pour ajouter le film aux favoris
+    fetch('View/favorite.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ film_id: film.id })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+        if (data.status === 'success') {
+            alert('Film ajouté aux favoris avec succès!');
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(error => console.error('Erreur:', error));
 }
 
 function formatDate(dateStr) {
