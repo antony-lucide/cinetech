@@ -8,7 +8,7 @@ class Connexion
     private $host = "localhost";
     private $db_name = "cinetech";
     private $username = "root";
-    private $password = "root";
+    private $password = "";
     public $conn;
 
     public function connexionBDD()

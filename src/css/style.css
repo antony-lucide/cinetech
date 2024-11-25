@@ -1,6 +1,5 @@
 /* src/css/style.css */
 
-/* Styles généraux */
 * {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
@@ -9,47 +8,53 @@
 }
 
 body {
-    background-color: #f0f0f0;
+    background: rgb(131,58,180);
+    background: -moz-linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#833ab4",endColorstr="#fcb045",GradientType=1); 
     color: #333;
 }
 
-/* Logo */
 .logo > a > img {
     width: 120px;
 }
 
-/* Header et Navigation */
 header {
-    display: flex; /* Utilisation de flex pour un alignement moderne */
-    justify-content: space-between; /* Espacement entre logo et nav */
-    align-items: center; /* Centrer verticalement */
-    padding: 10px 20px; /* Padding pour le header */
-    background-color: #d41e1e; /* Couleur de fond */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #d41e1e;
+    opacity: 0.7;
+	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    height: auto;
+    box-sizing: border-box;
+    padding: 10px; /* Adding padding for better spacing */
 }
 
 nav {
-    display: flex; /* Utilisation de flex pour les liens */
-    gap: 40px; /* Espacement entre les liens */
+    display: flex;
+    gap: 40px;
 }
 
 .navLink {
-    list-style: none; /* Suppression des puces */
+    list-style: none;
 }
 
 .navLink a {
     color: #ffffff;
-    text-decoration: none; /* Suppression du soulignement */
-    padding: 10px 15px; /* Padding pour les liens */
-    border-radius: 5px; /* Coins arrondis */
-    transition: background-color 0.3s, transform 0.2s; /* Transition pour l'effet hover */
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .navLink a:hover {
-    background-color: #61dafb; /* Couleur de fond au survol */
-    transform: scale(1.05); /* Légère augmentation de la taille au survol */
+    background-color: #61dafb;
+    transform: scale(1.05);
 }
 
-/* Style de la barre de recherche */
 .search-bar {
     position: relative;
     width: 100%;
@@ -70,14 +75,12 @@ nav {
     border-color: #61dafb;
 }
 
-/* Liste déroulante des résultats */
 #autocompleteList {
     position: absolute;
     top: calc(100% + 5px);
     left: 0;
     right: 0;
     background: white;
-    border: 1px solid #ccc;
     border-radius: 5px;
     max-height: 300px;
     overflow-y: auto;
@@ -99,7 +102,6 @@ nav {
     background-color: #f0f0f0;
 }
 
-/* Centrage des boutons de navigation */
 .slider-buttons {
     display: flex;
     justify-content: center;
@@ -107,7 +109,6 @@ nav {
     margin-top: 20px;
 }
 
-/* Style des boutons */
 .slider-buttons button {
     padding: 10px 20px;
     font-size: 1em;
@@ -143,7 +144,63 @@ h1, h2 {
     font-size: 1.2em;
 }
 
-/* Conteneur de films et séries */
+#card-detail {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 20px;
+    max-width: 1080px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+#card-detail img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px 0 0 10px;
+}
+
+#card-detail .details {
+    padding: 20px;
+    flex: 1;
+}
+
+#card-detail h2 {
+    text-align: left;
+    font-size: 2em;
+    color: #282c34;
+    margin-bottom: 10px;
+}
+
+#card-detail p {
+    text-align: left;
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+#card-detail .button-container {
+    display: flex;
+    gap: 10px;
+}
+
+#card-detail .button-container button {
+    padding: 10px 15px;
+    font-size: 1em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#card-detail .button-container button:hover {
+    background-color: #45a049;
+}
+
 #film, #serie, #tv, #movie {
     display: flex;
     justify-content: center;
@@ -272,7 +329,6 @@ input[type="button"]:hover, input[type="submit"]:hover {
     padding: 20px;
 }
 
-/* Favoris */
 #favori > ul {
     list-style: none;
     display: flex;
@@ -290,7 +346,6 @@ input[type="button"]:hover, input[type="submit"]:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Commentaires */
 .comment {
     display: flex;
     flex-direction: column;
@@ -350,7 +405,6 @@ textarea {
     font-size: 16px;
 }
 
-/* Styles pour le bouton burger */
 .burger {
     display: none;
     background: none;
@@ -360,7 +414,6 @@ textarea {
     cursor: pointer;
 }
 
-/* Media tablet */
 @media screen and (max-width: 1080px) {
     #card-detail {
         display: flex;

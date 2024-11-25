@@ -39,10 +39,7 @@ CREATE TABLE `commentaire` (
 -- Dumping data for table `commentaire`
 --
 
-INSERT INTO `commentaire` (`id_commentaire`, `content`, `id_user`, `id_media`, `created_at`) VALUES
-(5, 'test', 7, 257064, '2024-11-17 16:56:49'),
-(7, 'bonjour', 1, 257064, '2024-11-17 18:55:13'),
-(9, 'Film même pas térifiant , à évité de toutes urgence', 7, 1034541, '2024-11-19 13:50:19');
+
 
 -- --------------------------------------------------------
 
@@ -63,12 +60,6 @@ CREATE TABLE `favoris` (
 -- Dumping data for table `favoris`
 --
 
-INSERT INTO `favoris` (`id_favori`, `user_id`, `element_id`, `element_type`, `title`, `poster_patch`) VALUES
-(8, 1, 257064, 'tv', 'Volta por Cima', '/nyN8R0P1Hqwq7ksJz4O2BIAUd4W.jpg'),
-(9, 1, 533535, 'movie', 'Deadpool & Wolverine', '/hw3Gfp8xLpoVewMbFyFVRsqyGlK.jpg'),
-(10, 1, 1184918, 'movie', 'Le Robot sauvage', '/yJGZlmCmQGX6PGe9f0LtZffLHhZ.jpg'),
-(11, 1, 124364, 'tv', 'FROM', '/cjXLrg4R7FRPFafvuQ3SSznQOd9.jpg'),
-(12, 1, 1116490, 'movie', 'Cash Out', '/xBJnIvRdL0nDHgvivr6EgBQizes.jpg');
 
 -- --------------------------------------------------------
 
