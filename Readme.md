@@ -19,7 +19,7 @@ Assurez-vous également d'avoir installé [Git](https://git-scm.com/downloads).
 Clonez le dépôt Git en exécutant la commande suivante :
 
 ```bash
-git clone https://github.com/antony-lucide
+git clone https://github.com/cinetech
 
 ```
 
