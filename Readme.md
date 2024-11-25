@@ -1,74 +1,87 @@
 # CINETECH
-Cinetech est un site web utilisant une API pour afficher des films et des séries fournis par [The Movie Database](https://www.themoviedb.org/signup).
+
+Cinetech est une plateforme web qui exploite une API pour afficher des films et des séries fournis par [The Movie Database](https://www.themoviedb.org/signup).
 
 ## Installation
-Pour configurer et utiliser le site, installez les dépendances et configurez la base de données comme suit:
 
-* **Etape 1** - installer un serveur local de votre choix  ( [WAMP](https://www.wampserver.com/), [XAMP](https://www.apachefriends.org/fr/index.html) , [LAMP](https://doc.ubuntu-fr.org/lamp) ou bien [LARAGON](https://laragon.org/download/) ) et ainsi [GIT](https://git-scm.com/downloads).
+Pour configurer et utiliser le projet, suivez les étapes ci-dessous :
 
-* **Etape 2** - Une fois votre serveur et Git installés, vous pouvez récupérer le projet en cliquant sur Code puis Download ZIP ou en exécutant la commande suivante :
+### Étape 1 : Préparez votre environnement
+Installez un serveur local adapté à votre système, comme :
+- [WAMP](https://www.wampserver.com/),
+- [XAMP](https://www.apachefriends.org/fr/index.html),
+- [LAMP](https://doc.ubuntu-fr.org/lamp),
+- ou [LARAGON](https://laragon.org/download/).
+
+Assurez-vous également d'avoir installé [Git](https://git-scm.com/downloads).
+
+### Étape 2 : Récupérez le projet
+Clonez le dépôt Git en exécutant la commande suivante :
+
+```bash
+git clone https://github.com/antony-lucide
 
 ```
-git clone https://github.com/YoussefGhollamallah/cinetech.git
+
+Sinon, téléchargez directement le projet en cliquant sur Code > Download ZIP.
+Étape 3 : Configurez la base de données
+
+    Lancez votre serveur local.
+    Importez le fichier cinetech.sql (situé à la racine du projet) dans votre base de données :
+        Via phpMyAdmin : utilisez l'onglet Importer.
+        Via la ligne de commande :
+
+```bash
+    mysql -u root -p cinetech < cinetech.sql
+```
+Remarque : Si un mot de passe MySQL est défini, utilisez cette variante :
+
+```bash
+    mysql -u root -p votre_mot_de_passe cinetech < cinetech.sql
 ```
 
-* **Etape 3** -  Une fois le serveur local lancé et le projet téléchargé, importez la base de données fournie à la racine du projet (cinetech.sql) :
-    * Via phpMyAdmin en utilisant l'onglet Import.
-    * Ou via la ligne de commande :
+Étape 4 : Installez les dépendances
 
-```
-mysql -u root -p cinetech < cinetech.sql
-```
+Ce projet utilise Composer pour gérer ses dépendances. Exécutez la commande suivante :
 
-*Note : Si vous avez définu yb lit de oasse oiyr MySQL, la commande devient:*
+```bash
+    composer install
 ```
-mysql -u root -p votre_mot_passe cinetech < cinetech.sql
-```
+Outils
 
-* **Etape 4** - Enfin, comme le projet utilise des dépendances via Composer, exécutez la commande suivante pour rendre le site fonctionnel :
-```
-composer install
-```
+Ce projet utilise l'API de The Movie Database. Une clé d'API (API_KEY) est nécessaire pour interagir avec les données.
 
-## Outils
-Ce projet utilise l'API [The Movie Database](https://www.themoviedb.org/signup). Une fois inscrit, vous obtiendrez une API_KEY, qui vous permettra d'interagir avec les données.
+Exemple de configuration en PHP :
 
-Voici un exemple de configuration avec PHP :
-```
-<?php
+```php
+    <?php
 
-define("API_KEY", "votre_api");
-define("API_FILM_TENDANCE_URL", "https://api.themoviedb.org/3/trending/movie/week?language=fr-FR&api_key=" . API_KEY);
-define("API_SERIE_TENDANCE_URL", "https://api.themoviedb.org/3/trending/tv/week?language=fr-FR&api_key=" . API_KEY);
+    define("API_KEY","b1ea66a0baf7bc288a9c02ca4ee33d41");
+    define("API_FILM_TENDANCE_URL", "https://api.themoviedb.org/3/trending/movie/week?language=fr-FR&api_key=" . API_KEY);
+    define("API_SERIE_TENDANCE_URL", "https://api.themoviedb.org/3/trending/tv/week?language=fr-FR&api_key=" . API_KEY);
 
-?>
+    ?>
 ```
 
-## Fonctionnalités
-Le site propose actuellement les fonctionnalités suivantes : 
-* Les utilisateurs peuvent parcourir les films et séries disponibles, consulter les détails d'un film ou d'une série.
-* Possibilité de s'inscrire et de se connecter pour accéder à des fonctionnalités supplémentaires.
-* Une fois connecté, un utilisateur peut :
-    * Ajouter et supprimer des commentaires dans la page détails d'un film ou séries.
-    * Ajouter des film ou séries à ses favoris pour un accès rapide.
-    * La possibilité de rechercher un film et des séries grâce à une barre de recherche.
+Fonctionnalités
+Actuelles
 
-Le site va proposé prochainement les fonctionnalités suivante :
-* La possibilité de répondre à des commentaires d'autre utilisateurs.
-* De pouvoir noté un film ou une série et de voir la moyenne des notes.
+    Explorer les films et séries disponibles.
+    Voir les détails d'un film ou d'une série.
+    S'inscrire et se connecter pour des fonctionnalités supplémentaires.
+    Fonctionnalités pour les utilisateurs connectés :
+        Ajouter ou supprimer des commentaires sur les pages de détail.
+        Ajouter des films ou séries aux favoris.
+        Effectuer des recherches via une barre dédiée.
 
-## Contribuer au projet
+À venir
 
-Vous souhaitez participer au développement de Cinetech ou proposer des améliorations ? Toutes les contributions sont les bienvenues!
+    Répondre aux commentaires d'autres utilisateurs.
+    Noter les films et séries avec une moyenne visible.
 
-### Comment contribuer ?
-* Signalez un bug ou proposer une nouvelle fonctionnalité en ouvrant une [issues](https://github.com/YoussefGhollamallah/cinetech/issues).
-* Forkez le projet et soumettez un pull request avec vos modifications.
-* Rejoinez la discussion sur les améliorations ou des idées pour enrichir le projet.
+    Contact
 
-### Contact
-Pour toute question ou pour discuter directement, n'hésitez pas à me contacter:
-* Email : ghollamallahyoussef@gmail.com
-* GitHub : [YoussefGhollamallah](https://github.com/YoussefGhollamallah)
+Pour toute question ou suggestion, contactez-moi :
 
-Je serai ravi d'échanger avec vous et d'accueillir vos idées! 😊
+    Email : antony.lucide@laplateforme.com
+    GitHub : antony-lucide
