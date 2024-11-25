@@ -1,43 +1,17 @@
 <?php
-require_once './class/root.php';
-require_once './config/config.php';
 
-$root = new Root();
-$path = $root->getPath();
+require_once 'config/autoload.php';
+require_once "vendor/autoload.php";
 
-switch ($path) {
-    case '':
-    case 'index':
-        require 'index.php';
-        break;
-    case 'auth':
-        require './View/auth.php';
-        break;
-    default:
-        http_response_code(404);
-        echo "404 Not Found";
-        break;
+use App\Classes\Routeur;
+
+Autoload::start();
+
+if (isset($_GET['r'])) {
+    $request = $_GET['r'];
+} else {
+    $request = 'index'; // Par défaut, redirige vers la page d'accueil
 }
 
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinema Home - All Films</title>
-    <link rel="stylesheet" href="./assets/style.css">
-</head>
-<body>
-    <header>
-        <h1>Cinetech</h1>
-    </header>
-    <main>
-        <section id="films-list">
-            <h2>Now Showing</h2>
-        </section>
-    </main>
-    <script src="./assets/scripts.js"></script>
-</body>
-</html>
+$routeur = new Routeur($request);
+$routeur->renderController();

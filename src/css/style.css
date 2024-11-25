@@ -1,0 +1,427 @@
+/* src/css/style.css */
+
+/* Styles généraux */
+* {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Logo */
+.logo > a > img {
+    width: 120px;
+}
+
+/* Header et Navigation */
+header {
+    display: flex; /* Utilisation de flex pour un alignement moderne */
+    justify-content: space-between; /* Espacement entre logo et nav */
+    align-items: center; /* Centrer verticalement */
+    padding: 10px 20px; /* Padding pour le header */
+    background-color: #d41e1e; /* Couleur de fond */
+}
+
+nav {
+    display: flex; /* Utilisation de flex pour les liens */
+    gap: 40px; /* Espacement entre les liens */
+}
+
+.navLink {
+    list-style: none; /* Suppression des puces */
+}
+
+.navLink a {
+    color: #ffffff;
+    text-decoration: none; /* Suppression du soulignement */
+    padding: 10px 15px; /* Padding pour les liens */
+    border-radius: 5px; /* Coins arrondis */
+    transition: background-color 0.3s, transform 0.2s; /* Transition pour l'effet hover */
+}
+
+.navLink a:hover {
+    background-color: #61dafb; /* Couleur de fond au survol */
+    transform: scale(1.05); /* Légère augmentation de la taille au survol */
+}
+
+/* Style de la barre de recherche */
+.search-bar {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+#searchInput:focus {
+    border-color: #61dafb;
+}
+
+/* Liste déroulante des résultats */
+#autocompleteList {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 10;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#autocompleteList li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#autocompleteList li:hover {
+    background-color: #f0f0f0;
+}
+
+/* Centrage des boutons de navigation */
+.slider-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Style des boutons */
+.slider-buttons button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.slider-buttons button:hover {
+    background-color: #45a049;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #282c34;
+    text-align: center;
+    padding: 20px;
+}
+
+.p-index {
+    color: #555;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+/* Conteneur de films et séries */
+#film, #serie, #tv, #movie {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#film > div, #serie > div, #tv > div, #movie > div {
+    margin: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#film > div img, #serie > div img, #tv > div img, #movie > div img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+input[type="button"], input[type="submit"] {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="button"]:hover, input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+#card-detail {
+    display: flex;
+    gap: 20px;
+    margin: 20px;
+    max-width: 1080px;
+}
+
+#card-detail img {
+    width: 300px;
+    border-radius: 10px;
+}
+
+#card-detail h2 {
+    text-align: center;
+    font-size: 2em;
+    padding: 20px;
+}
+
+#card-detail p {
+    text-align: center;
+    font-size: 1.2em;
+    padding: 20px;
+}
+
+#detail-info {
+    background-color: #e9ecef;
+    border-radius: 10px;
+}
+
+.actors {
+    margin-top: 20px;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 1080px;
+}
+
+.carousel {
+    display: flex;
+    gap: 20px;
+    animation: scroll 35s linear infinite;
+}
+
+.slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    text-align: center;
+}
+
+.slide img {
+    border-radius: 5px;
+    width: 50px;
+    height: auto;
+    margin-bottom: 5px;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+.directors ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Favoris */
+#favori > ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-favori {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Commentaires */
+.comment {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+    padding: 2px;
+    background: #ffffff;
+}
+
+.comment form {
+    background: none;
+}
+
+#comments {
+    background-color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.deletBtn {
+    background-color: red;
+}
+
+#add-comment form {
+    padding: 20px;
+}
+
+#add-comment button {
+    margin-top: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+}
+
+/* Styles pour le bouton burger */
+.burger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+/* Media tablet */
+@media screen and (max-width: 1080px) {
+    #card-detail {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    #img-detail {
+        width: 90%;
+    }
+
+    #img-detail img {
+        width: 100%;
+        height: auto;
+    }
+
+    .actors {
+        width: 90%;
+    }
+    
+    .details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #comments {
+        width: 90%;
+    }
+
+    #add-comment {
+        width: 90%;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.8);
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        gap: 15px;
+        z-index: 1000;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    .navLink {
+        flex-direction: column;
+    }
+
+    .logo {
+        display: none;
+    }
+}
